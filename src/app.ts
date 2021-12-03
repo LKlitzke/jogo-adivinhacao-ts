@@ -12,7 +12,7 @@
 // Array de cores para HTML5
 const arrayCores: string[] = [
     "AliceBlue", "AntiqueWhite", "Aqua", "Aquamarine", "Azure", "Beige", "Bisque",
-    "Black", "BlanchedAlmond", "Blue", "BlueViolet", "Brown", "BurlyWood", "CadetBlue",
+    /*"Black",*/ "BlanchedAlmond", "Blue", "BlueViolet", "Brown", "BurlyWood", "CadetBlue",
     "Chartreuse", "Chocolate", "Coral", "CornflowerBlue", "Cornsilk", "Crimson", "Cyan",
     "DarkBlue", "DarkCyan", "DarkGoldenRod", "DarkGray", "DarkGrey", "DarkGreen", "DarkKhaki",
     "DarkMagenta", "DarkOliveGreen", "DarkOrange", "DarkOrchid", "DarkRed", "DarkSalmon", "DarkSeaGreen",
@@ -61,10 +61,12 @@ var corCorreta: string = arrayRandom[Math.floor(Math.random() * arrayRandom.leng
 var acerto: boolean = false;
 var chute: string = "";
 
+// Copia o array de cores para posterior remoção da opção incorreta
+const arrayLower: string[] = arrayRandom.map(arrayRandom => arrayRandom.toLowerCase());
 
 // Loop do jogo enquanto o usuário não acertar a cor
 do {
-    chute = window.prompt("Estou pensando em alguma dessas cores:\n  > " + arrayRandom.join('\n  > ') + "\n Qual delas é a correta? (Pode digitar minúsculo ou maiúsculo)");
+    chute = window.prompt("Estou pensando em alguma dessas cores:\n  > " + arrayRandom.join('\n  > ') + "\n Qual delas é a correta?");
     if(chute.toLowerCase() == corCorreta.toLowerCase()){
         acerto = true;
         alert("Parabéns " + nome + ", você acertou a cor! :D");
@@ -73,11 +75,21 @@ do {
     else if(chute == null || chute == ""){
         alert("Digite alguma coisa, vamos vamos!");
     }
-    else {
+    else if(arrayLower.includes(chute.toLowerCase())) {
+        var Aux = arrayLower.indexOf(chute.toLowerCase());
+        console.log(Aux + " " + chute);
+        if(Aux != -1){
+            arrayRandom.splice(Aux,1);
+            arrayLower.splice(Aux,1);
+        } 
+
         alert(
             "Esta não é a cor correta!\n\nDica: A SUA cor está alfabeticamente"
             + (chute.toLowerCase() > corCorreta.toLowerCase() ? " DEPOIS " : " ANTES ")
             + "da que eu pensei. \nTente novamente!");
+    }
+    else {
+        alert("Esta cor não existe na listagem. Tente novamente!");
     }
 } while(acerto == false);
 

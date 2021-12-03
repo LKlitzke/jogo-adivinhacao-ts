@@ -24,8 +24,9 @@
     h1 {
         font-family: 'Roboto';
         text-align: center;
+        font-size: 3vw;
+        font-weight: bold;
         color: black;
-        font-size: 2vw;
         margin-top: 200px;
         margin-bottom: 10px;
     }
@@ -41,7 +42,6 @@
     }
 </style>
 <script>
-    document.getElementById("refresh").onclick = function(){refreshPage()};
     function refreshPage(){
         window.location = window.location.href+'?eraseCache=true';
         document.location.reload("true");
