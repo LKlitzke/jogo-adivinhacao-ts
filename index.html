@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jogo de Adivinhação em JS</title>
+    </head>
+    <body>
+        <script>var exports = {};</script>
+        <script src="./dist/app.js"></script>
+        <h1 class="textofinal"> Este é o final do jogo! </h1>
+        <p>Você pode reiniciar o jogo apertando F5.</p>
+    </body>
+</html>
+
+<style>
+    html body {
+        font-family: 'Encode Sans', sans-serif;
+        color: white;
+        margin-top: 200px;
+        margin: 0;
+    }
+
+    h1 {
+        font-family: 'Roboto';
+        text-align: center;
+        color: black;
+        font-size: 2vw;
+        margin-top: 200px;
+        margin-bottom: 10px;
+    }
+    p {
+        font-family: 'Roboto';
+        font-size: 1.5vw;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+    }
+    b { 
+        text-decoration: underline;
+    }
+</style>
+<script>
+    document.getElementById("refresh").onclick = function(){refreshPage()};
+    function refreshPage(){
+        window.location = window.location.href+'?eraseCache=true';
+        document.location.reload("true");
+    }
+</script>
